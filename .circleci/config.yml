@@ -27,7 +27,7 @@ jobs:
           at: .
       - run:
           name: "save file"
-          command: "cat output.txt"
+          command: "cat ./output.txt"
 
 workflows:
   say-hello-workflow:
