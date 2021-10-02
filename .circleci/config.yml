@@ -33,4 +33,6 @@ workflows:
   say-hello-workflow:
     jobs:
       - save-file
-      - print-file
+      - print-file:
+          requires:
+            - save-file
