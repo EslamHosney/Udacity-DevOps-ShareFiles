@@ -7,16 +7,17 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
       - run:
           name: "save file"
-          command: "echo EslamSamyHosneyfilesaved > output.txt"
+          command: "echo EslamSamyHosneyfilesaved > ~/output.txt"
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - output.txt
       - run:
-          name: "dhow files"
+          name: "show files"
           command: "ls -l"
+          
   print-file:
     docker:
       - image: cimg/base:stable
@@ -24,10 +25,10 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: .
+          at: ~/
       - run:
           name: "save file"
-          command: "cat ./output.txt"
+          command: "cat ~/output.txt"
 
 workflows:
   say-hello-workflow:
