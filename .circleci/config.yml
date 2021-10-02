@@ -1,34 +1,36 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  save-file:
     docker:
       - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-
       - persist_to_workspace:
           root: .
           paths:
-            - eslam
+            - .
       - run:
           name: "save file"
-          command: "echo EslamSamyHosneyfilesaved > output2.txt"
+          command: "echo EslamSamyHosneyfilesaved > output.txt"
       - run:
           name: "dhow files"
-          command: "ls -l"      
+          command: "ls -l"
+  print-file:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+      - attach_workspace:
+          at: .
+      - run:
+          name: "save file"
+          command: "cat output.txt"
+
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - save-file
+      - print-file
