@@ -14,9 +14,17 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - run:
+          name: "save file"
+          command: "echo "EslamSamyHosney filesaved" > output.txt"
       - run:
           name: "Say hello"
-          command: "echo Hello, World!"
+          command: "ls -l"      
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
