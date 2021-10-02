@@ -16,12 +16,12 @@ jobs:
       - checkout
 
       - persist_to_workspace:
-          root: /tmp/dir
+          root: .
           paths:
             - eslam
       - run:
           name: "save file"
-          command: "echo EslamSamyHosneyfilesaved > output.txt"
+          command: "echo EslamSamyHosneyfilesaved > output2.txt"
       - run:
           name: "dhow files"
           command: "ls -l"      
