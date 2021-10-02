@@ -16,7 +16,7 @@ jobs:
             - output.txt
       - run:
           name: "show files"
-          command: "ls -l"
+          command: "ls ~/ -l"
 
   print-file:
     docker:
