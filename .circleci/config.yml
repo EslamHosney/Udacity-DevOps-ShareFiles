@@ -21,10 +21,10 @@ jobs:
             - .
       - run:
           name: "save file"
-          command: "echo "EslamSamyHosney filesaved" > output.txt"
-#      - run:
-#          name: "Say hello"
-#          command: "ls -l"      
+          command: "echo EslamSamyHosneyfilesaved > output.txt"
+      - run:
+          name: "Say hello"
+          command: "ls -l"      
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
