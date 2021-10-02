@@ -17,17 +17,16 @@ jobs:
       - run:
           name: "show files"
           command: "ls -l"
-          
+
   print-file:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-
       - attach_workspace:
           at: ~/
       - run:
-          name: "save file"
+          name: "print file"
           command: "cat ~/output.txt"
 
 workflows:
